@@ -1,38 +1,67 @@
-# :floppy_disk: Minesweeper
-Minesweeper with a GUI and without a GUI
+# Minesweeper Solver: Greedy, A*, dan UCS
 
-## :speaker: About the game
-In the game the player have to choose coordinates that he think don't have mines, so he could continue playing and solving the matrix.
-The player have a possibility to put a flag at any coordinate to save the place of a bomb.
-After cleaning all the matrix without selecting a mine you win.
+## Tujuan
 
-## :clipboard: The ouput of the Matrix
-The coordinates have a number that represents how many bombs there are near that point
+Proyek ini adalah pembuktian penerapan tiga algoritma pencarian pada game Minesweeper, yaitu **Greedy**, **A\*** (A Star), dan **UCS** (Uniform Cost Search). Setiap algoritma memainkan game secara otomatis di atas GUI, sehingga cara kerja dan perbedaan hasilnya dapat diamati langsung.
 
-- '*' represent places that have mines(if you loose you can see them)
+- **Greedy** memilih petak dengan risiko lokal terkecil saat itu, tanpa melihat ke depan.
+- **A\*** mencari konfigurasi ranjau yang konsisten dengan semua angka di papan, lalu memilih petak dengan probabilitas ranjau terendah.
+- **UCS** memilih langkah berdasarkan biaya kumulatif terkecil.
 
-- 'B' represent flags placed by the player
+## Struktur Folder
 
-## :green_book: V1_without_GUI
-It's the version made in C. This version is singleplayer and is played in terminal or cmd.
+```
+.
+├── UCS/             # versi UCS
+│   └── main.py
+└── Greedy_Astar/    # versi Greedy dan A*
+    ├── main_greedy.py
+    └── main_astar.py
+```
 
-![executing v1](/v1_without_GUI/images/executing.gif)
+## Persyaratan
 
-> How to use: Open a terminal, type *gcc main.c -o executable* and *./executable*
+- Python 3
+- PySimpleGUI
 
-## :green_book: V2_with_GUI
-It's the version made in C++. This version is singleplayer and is played at a GUI(have to use QTCreator to execute).
+```bash
+pip install PySimpleGUI
+```
 
-<img src="/v2_with_GUI/images/executing.gif" width="600" height="400">
+## Cara Menjalankan
 
-> How to use: Install QtCreator(I used 5.9.9) to use, and run it with the run button at the program.
+**UCS**
 
-## :green_book: V3_py_GUI
-It's the version made in Python. This version is singleplayer and multiplayer and is played at a GUI(made with PySimpleGUI).
+Buka folder `UCS`, lalu jalankan:
 
-![executing v3](/v3_py_GUI/images/executing.gif)
+```bash
+cd UCS
+python main.py
+```
 
-> How to use: Install Python and install PySimpleGUI: *pip install PySimpleGUI*, after that *python main.py*
+**Greedy**
 
-**:v: Good game for you, and don't be sad for loosing, minesweeper is hard sometimes(when you find a decision problem)**
-**:smiley: Good luck**
+Buka folder `Greedy_Astar`, lalu jalankan:
+
+```bash
+cd Greedy_Astar
+python main_greedy.py
+```
+
+**A\***
+
+Buka folder `Greedy_Astar`, lalu jalankan:
+
+```bash
+cd Greedy_Astar
+python main_astar.py
+```
+
+Pada menu, pilih **Singleplayer** dan tingkat kesulitan (Easy, Intermediate, atau Expert). Solver akan membuka petak satu per satu hingga game selesai.
+
+## Kredit
+
+Game Minesweeper dasar (logika permainan dan GUI) berasal dari repositori asli karya Lucas Rennok:
+https://github.com/lucasrennok/Minesweeper/tree/master
+
+Proyek ini menambahkan algoritma solver (Greedy, A\*, dan UCS) di atas game tersebut.

@@ -2,6 +2,7 @@ from menu_view import menuScreen
 from menu_view import connectScreen
 from game_view import gameScreen
 from game_view import resultScreen
+from gui_solver import solve_on_gui
 
 def main():
     play_more = True
@@ -14,6 +15,9 @@ def main():
         if(option[0]=="single"):
             game_window = gameScreen(option[1], option[0])
             result = game_window.play(None)
+        elif(option[0]=="solver"):
+            game_window = gameScreen(option[1], "single")
+            result = solve_on_gui(game_window, delay=0.4)
         elif(option[0]=="multi"):
             connect_window = connectScreen()
             data_connection = connect_window.getData()
